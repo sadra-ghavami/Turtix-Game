@@ -1,6 +1,6 @@
 # Turtix Game
 
-![Turtix Logo](Pictures/Turix.jpg)
+![Turtix Logo](Picture/Turix.jpg)
 
 Welcome to **Turtix**, an adventure game developed with C++ and the SFML library. In this game, you control a character (Turtix) as they navigate through various levels and obstacles. This is an early version of the game, showcasing basic gameplay elements.
 
