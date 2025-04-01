@@ -4,7 +4,7 @@
 #include "Map.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-const int WINDOW_X_SIZE = 1025;
+const int WINDOW_X_SIZE = 1026;
 const int WINDOW_Y_SIZE = 600;
 
 

@@ -19,7 +19,7 @@ const int MOVE_LEFT = 4;
 const int slice_sprite_num = 41;
 const int slice_size = (slice_sprite_num-1)/2;
 const int MIDDLE_LINE_NUM = 52;
-const int START_LINE_NUM = 0;
+const int START_LINE_NUM = 200;
 const int MAP_LEFT_EDGE = 10;
 const int MAP_RIGHT_EDGE = 94;
 const int BASE_LEVEL_HEIGHT = 50;
@@ -44,8 +44,12 @@ public:
 	virtual sf::Sprite get_next_move_pic(int move);
 	virtual void update_pos(int move);
 	virtual int get_x(){return turtle_x;}
+	virtual int get_y(){return turtle_y;}
 	virtual int get_height(){return turtle_height;}
+	virtual int get_head_y() {return turtle_y+(TURTLE_SIZE/2);}
+	virtual int get_foot_y() {return turtle_y-(TURTLE_SIZE/2);}
 	bool check_is_turtle_jumping(){return is_turtle_rising||is_turtle_falling;}
+	void finish_jump();
 
 protected:
 	int turtle_x;

@@ -48,17 +48,26 @@ Map::Map(std::string map_adrress, sf::RenderWindow *window){
 
 
 void Map::update_positions(int move){
+
+	if(turtle->get_foot_y() <= normal_field_height){
+		// std::cout << turtle->get_foot_y() << std::endl;
+		turtle->finish_jump();
+	}
+
 	turtle->update_pos(move);
+
 	for(int i=0 ; i<NUM_TURTLE_BABY ;i++){
 		turtle_babies[i]->check_is_baby_free(turtle);
 		turtle_babies[i]->update_baby_pos();
 	}
+
 	if(turtle->get_x() >= MAP_LEFT_EDGE && turtle->get_x() <= MAP_RIGHT_EDGE){
 		if(move == MOVE_LEFT)
-			map_center_x--;
+			this->map_center_x--;
 		else if(move == MOVE_RIGHT)
-			map_center_x++;
+			this->map_center_x++;
 	}
+
 }
 
 
@@ -100,12 +109,12 @@ void Map::draw_map_frame(int window_x_size, int window_y_size, sf::RenderWindow 
 		this->draw_slice_in_window(line_code[j],window,window_x_size,window_y_size);
 		for(int i=0 ; i<NUM_TURTLE_BABY ; i++){
 			sf::Sprite baby_turtle_run = turtle_babies[i]->get_baby_next_move_pic();
-			baby_turtle_run.setPosition(normal_field_lenght*(turtle_babies[i]->get_x()-map_center_x+slice_size),window_y_size-normal_field_height-turtle_babies[i]->get_height());
+			baby_turtle_run.setPosition(normal_field_lenght*(turtle_babies[i]->get_x()-map_center_x+slice_size),window_y_size-turtle_babies[i]->get_y());
 			window->draw(baby_turtle_run);
 		}
 
 		sf::Sprite turtle_run = turtle->get_next_move_pic(move);
-		turtle_run.setPosition(normal_field_lenght*(turtle->get_x()-map_center_x+slice_size),window_y_size-normal_field_height-turtle->get_height());
+		turtle_run.setPosition(normal_field_lenght*(turtle->get_x()-map_center_x+slice_size),window_y_size-turtle->get_y());
 		window->draw(turtle_run);
 	}
 }

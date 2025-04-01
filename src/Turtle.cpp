@@ -89,6 +89,7 @@ void Turtle::update_horizontal_pos(int move){
 void Turtle::update_vertical_pos(int move){
 	if(is_turtle_rising){
 		turtle_height += EACH_FRAME_JUMP_HEIGHT;
+		turtle_y += EACH_FRAME_JUMP_HEIGHT;
 		if(turtle_height >= JUMP_MAX_HEIGHT+BASE_LEVEL_HEIGHT){
 			is_turtle_rising = false;
 			is_turtle_falling = true;
@@ -96,13 +97,19 @@ void Turtle::update_vertical_pos(int move){
 	}
 	else if(is_turtle_falling){
 		turtle_height -= EACH_FRAME_JUMP_HEIGHT;
-		if(turtle_height == BASE_LEVEL_HEIGHT){
-			is_turtle_falling = false;
-			is_turtle_rising = false;
-		}
+		turtle_y -= EACH_FRAME_JUMP_HEIGHT;
+
+		// if(turtle_height == BASE_LEVEL_HEIGHT){
+		// 	is_turtle_falling = false;
+		// 	is_turtle_rising = false;
+		// }
 	}
-	else if(move == MOVE_UP)
+	else if(move == MOVE_UP) {
 		is_turtle_rising = true;
+		is_turtle_falling = false;
+		turtle_height += EACH_FRAME_JUMP_HEIGHT;
+		turtle_y += EACH_FRAME_JUMP_HEIGHT;
+	}
 }
 
 void Turtle::update_pos(int move){
@@ -117,4 +124,9 @@ void Turtle::check_turtle_is_falling(int left_boundry, int right_boundry){
 		is_turtle_rising = false;
 	}
 	
+}
+
+void Turtle::finish_jump() {
+	is_turtle_falling = false;
+	is_turtle_rising = false;
 }
