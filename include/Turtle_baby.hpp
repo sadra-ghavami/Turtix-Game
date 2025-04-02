@@ -2,17 +2,10 @@
 #define TURTLE_BABY_HEADER_FILE
 
 #include "Turtle.hpp"
+#include "Constants.hpp"
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-
-const std::string TURTLE_BABY_LEFT_RUN_PIC_ADRRESS = "Picture/turtle_baby_left_move.png";
-const std::string TURTLE_BABY_BUBBLE_PIC_ADRRESS = "Picture/turtle_baby_bubble.png";
-const int BUBBLE_IN_ROW = 5;
-const int BUBBLE_IN_COL = 2;
-const int BUBBLE_NUM = BUBBLE_IN_COL*BUBBLE_IN_ROW;
-const int BUBBLE_SIZE = 150;
-const int DELAY_FRAME = 7;
 
 class Turtle_baby : public Turtle{
 public:

@@ -1,16 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "Mission.hpp"
+#include "Constants.hpp"
+
 #include <string>
 #include <iostream>
-
-#ifndef MOVE_CONSTANTS
-#define MOVE_CONSTANTS
-const int NO_MOVE = 0;
-const int MOVE_UP = 1;
-const int MOVE_DOWN = 2;
-const int MOVE_RIGHT = 3;
-const int MOVE_LEFT = 4;
-#endif
 
 using namespace std;
 
@@ -21,7 +14,7 @@ int main()
     while (window.isOpen())
       {
         sf::Event event;
-        int move = NO_MOVE;
+        int move = Const::Move::NONE;
         while (window.pollEvent(event))
         {
             switch(event.type){
@@ -30,11 +23,11 @@ int main()
                 break;
             case sf::Event::KeyPressed :
                 if(event.key.code == sf::Keyboard::A)
-                    move = MOVE_LEFT;
+                    move = Const::Move::LEFT;
                 else if(event.key.code == sf::Keyboard::D)
-                    move = MOVE_RIGHT;
+                    move = Const::Move::RIGHT;
                 else if(event.key.code == sf::Keyboard::W)
-                    move = MOVE_UP;
+                    move = Const::Move::UP;
                 break;
             default :
                 break;
